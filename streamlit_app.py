@@ -63,7 +63,7 @@ def get_vector_store(text_chunks):
 def get_conversational_chain():
 
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, search the pdf first , then add your own context , make sure to provide all the details, if the answer is not in
+    Answer the question as detailed as possible from the provided context, search the pdf first , then add your own context , make sure to provide all the details & everytime add key highlights and bullet points , if the answer is not in
     provided context just say, "answer is not available in the context",try your own knowledge , try to display chart or any graphical presentation & mathematical equation also. don't provide the wrong answer\n\n
     Context:\n {context}?\n
     Question: \n{question}\n
@@ -104,7 +104,7 @@ with st.expander("Help"):
     st.subheader("Process PDFs:")
     st.write('''After uploading, hit the "Process" button to initiate the processing of your PDFs. Once the processing is complete, you'll see the success sign with done.''')
     st.subheader("Ask Your Questions:")
-    st.write('''Now type your questions and let PDFQueryWizard generate insightful responses.''')
+    st.write('''Now type your questions and let PDF QueryWizard generate insightful responses.''')
 
 user_question = st.text_input("Ask any Question from the PDF Files")
 ask = st.button("Ask")
