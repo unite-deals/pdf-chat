@@ -71,15 +71,15 @@ def get_conversational_chain():
     Answer:
     """
 
-    model = ChatGoogleGenerativeAI(google_api_key = key, model="gemini-pro", temperature=0.7)
+    model = ChatGoogleGenerativeAI(client=genai, model="gemini-pro", temperature=0.7)
     prompt = PromptTemplate(template = prompt_template, input_variables = ["context", "question"])
-    chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
+    chain = load_qa_chain(llm=model, chain_type="stuff", prompt=prompt)
     return chain
 
 
 
 def user_input(user_question):
-    embeddings = GoogleGenerativeAIEmbeddings(google_api_key = key, model = "models/embedding-001") 
+    embeddings = GoogleGenerativeAIEmbeddings( model = "models/embedding-001") 
     new_db = FAISS.load_local("faiss_index", embeddings)
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
